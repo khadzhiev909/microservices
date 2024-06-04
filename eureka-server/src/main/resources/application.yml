@@ -1,0 +1,18 @@
+spring:
+  #id приложения - желательно указывать всегда в микросервисных приложениях
+  application:
+    name: eureka-server
+server:
+  port: 8761
+eureka:
+  #т.к это не клиент, то убираем лишние настройки
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  #указываем что мы хотим использовать IP
+  instance:
+    preferIpAddress: true
+    lease-renewal-interval-in-seconds: 30
+  #url куда будет происходить регистрация микросервисов
+  serviceUrl:
+    defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
